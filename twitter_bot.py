@@ -1,6 +1,7 @@
 from lib2to3.pgen2 import token
 import tweepy
 from get_quotes import get_quotes
+from new_back_image import get_image
 
 # define all variables 
 ACCESS_TOKEN = "1478947519212122114-YBrdfURFpsEB4eQ38pZH1PBhvtVSx9";
@@ -17,13 +18,17 @@ CLIENT_SECRET="34vaoiCZAs6akJNx2Lb2KnbQ1ReT9pX8I2vdn0AZanvmBVw6co";
 auth = tweepy.OAuthHandler(API_KEY,API_KEY_SECRET)
 auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
 
-api = tweepy.API(auth)
+#api = tweepy.API(auth)
 
-api.update_status("Hello Tweepy")
+#api.update_status("Hello Tweepy")
 
 def tweet_bot():
-    quote = get_quotes()
-    print(quote)
+    #quote = get_quotes()
+    quote="Hello Tweepy"
+    api = tweepy.API(auth)
+    get_image()
+    media = api.media_upload("test.png")
+    api.update_status(status=quote,media_ids=[media.media_id_string])
     return
 
 
